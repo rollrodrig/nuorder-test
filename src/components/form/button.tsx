@@ -1,19 +1,20 @@
 import React, { FC, ReactNode } from 'react';
 import styled from 'styled-components';
+import { borderColor, textColor, bgColor } from '../../storage/colors';
 const ButtonStyled = styled.button`
-	border: 1px solid #c7e4ea;
-	border-radius: 30px;
+	border: 1px solid ${borderColor};
+	border-radius: 3px;
 	height: 40px;
 	padding: 0 20px;
 	text-align: center;
-	color: red;
+	color: ${textColor};
 	font-size: 16px;
 	font-weight: 700;
-	box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
-	background-color: #ffffff;
+	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.05);
+	background-color: ${bgColor};
 	cursor: pointer;
 	&:hover {
-		box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+		box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 	}
 `;
 export interface ButtonProps {

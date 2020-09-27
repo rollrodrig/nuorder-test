@@ -1,7 +1,19 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-const BackgroundStyled = styled.div``;
+import { Search } from '../components/search/search';
+import { List } from '../components/list/list';
+const HomeStyled = styled.div`
+	width: 100%;
+	max-width: 900px;
+	display: block;
+	margin: 40px auto 0 auto;
+`;
 export interface HomeProps {}
 export const Home: FC<HomeProps> = () => {
-	return <BackgroundStyled>Home</BackgroundStyled>;
+	return (
+		<HomeStyled>
+			<Search />
+			<List />
+		</HomeStyled>
+	);
 };

@@ -1,4 +1,4 @@
-import React, { FC, useState, ChangeEvent } from 'react';
+import React, { FC, useState, ChangeEvent, MutableRefObject } from 'react';
 import styled from 'styled-components';
 import { borderColor } from '../../storage/colors';
 const UserNameStyled = styled.input`
@@ -7,6 +7,7 @@ const UserNameStyled = styled.input`
 	width: 100%;
 	border: 1px solid ${borderColor};
 	border-radius: 3px;
+	padding: 0 10px;
 `;
 export interface InputProps {
 	onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
@@ -14,6 +15,7 @@ export interface InputProps {
 	onBlur?: (e: ChangeEvent<HTMLInputElement>) => void;
 	placeholder?: string;
 	value?: string;
+	extRef: any;
 }
 export const Input: FC<InputProps> = ({
 	onChange = () => {},
@@ -21,6 +23,7 @@ export const Input: FC<InputProps> = ({
 	onBlur = () => {},
 	placeholder = '',
 	value = '',
+	extRef,
 }) => {
 	const [inputValue, setInputValue] = useState(value);
 	const onChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
@@ -35,6 +38,7 @@ export const Input: FC<InputProps> = ({
 	};
 	return (
 		<UserNameStyled
+			ref={extRef}
 			onFocus={onFocusInput}
 			onBlur={onBlurInput}
 			onChange={onChangeInput}
