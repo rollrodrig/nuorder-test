@@ -52,6 +52,7 @@ export const Results: FC<ResultsProps> = ({ results = [] }) => {
 						key={result.id}
 						id={result.id}
 						title={result.title}
+						labels={result.labels}
 					/>
 				))
 			) : (

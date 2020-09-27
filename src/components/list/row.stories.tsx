@@ -11,10 +11,18 @@ Default.args = {
 	id: '123',
 	title: 'Bug: devtools Profiler causes unexpected errors ',
 	selected: false,
+	labels: [
+		{ color: 'c7c7c7', name: 'example 1' },
+		{ color: 'c4c4c4', name: 'example 2' },
+	],
 };
 export const Selected = Template.bind({});
 Selected.args = {
 	id: '123',
 	title: 'Bug: devtools Profiler causes unexpected errors ',
 	selected: true,
+	labels: [
+		{ color: 'c7c7c7', name: 'example 1' },
+		{ color: 'c4c4c4', name: 'example 2' },
+	],
 };
