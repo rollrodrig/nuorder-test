@@ -10,4 +10,11 @@ export const Default = Template.bind({});
 Default.args = {
 	id: '123',
 	title: 'Bug: devtools Profiler causes unexpected errors ',
+	selected: false,
+};
+export const Selected = Template.bind({});
+Selected.args = {
+	id: '123',
+	title: 'Bug: devtools Profiler causes unexpected errors ',
+	selected: true,
 };

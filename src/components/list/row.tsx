@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import { bgColor, borderColor } from '../../storage/colors';
 const RowStyled = styled.div`
 	padding: 10px 15px;
-	background-color: #ffffff;
+	background-color: ${({ selected }: { selected: boolean }) =>
+		selected ? bgColor : '#ffffff'};
 	border-bottom: 1px solid ${borderColor};
 	&:hover {
 		background-color: ${bgColor};
@@ -22,10 +23,11 @@ const Meta = styled.div`
 export interface RowProps {
 	id: string;
 	title: string;
+	selected: boolean;
 }
-export const Row: FC<RowProps> = ({ id, title }) => {
+export const Row: FC<RowProps> = ({ id, title, selected = false }) => {
 	return (
-		<RowStyled>
+		<RowStyled selected={selected}>
 			<Title>{title}</Title>
 			<TagStyled>Type: bug</TagStyled>
 			<Meta>#19911 opened yesterday by henryqdineen</Meta>
