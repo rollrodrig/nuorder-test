@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { Input, InputProps } from './input';
 export default {
@@ -8,3 +8,16 @@ export default {
 } as Meta;
 const Template: Story<InputProps> = (args) => <Input {...args} />;
 export const Default = Template.bind({});
+Default.args = {
+	onChange: (e: ChangeEvent<HTMLInputElement>) => {
+		console.log(e);
+	},
+	onFocus: (e: ChangeEvent<HTMLInputElement>) => {
+		console.log(e);
+	},
+	onBlur: (e: ChangeEvent<HTMLInputElement>) => {
+		console.log(e);
+	},
+	placeholder: 'example placeholder',
+	value: '',
+};

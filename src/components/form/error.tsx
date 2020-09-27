@@ -1,6 +1,6 @@
 import React, { FC, ReactNode } from 'react';
 import styled from 'styled-components';
-import { error as errorColor } from '../../storage/colors';
+import { errorColor } from '../../storage/colors';
 const ErrorStyled = styled.div`
 	font-size: 12px;
 	text-align: center;

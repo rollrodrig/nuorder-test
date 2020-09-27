@@ -1,4 +1,4 @@
-import React, { FC, useState, ChangeEvent, MutableRefObject } from 'react';
+import React, { Component, ChangeEvent, createRef, RefObject } from 'react';
 import styled from 'styled-components';
 import { borderColor } from '../../storage/colors';
 const UserNameStyled = styled.input`
@@ -9,41 +9,64 @@ const UserNameStyled = styled.input`
 	border-radius: 3px;
 	padding: 0 10px;
 `;
-export interface InputProps {
+export type InputProps = {
 	onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 	onFocus?: (e: ChangeEvent<HTMLInputElement>) => void;
 	onBlur?: (e: ChangeEvent<HTMLInputElement>) => void;
 	placeholder?: string;
 	value?: string;
-	extRef: any;
-}
-export const Input: FC<InputProps> = ({
-	onChange = () => {},
-	onFocus = () => {},
-	onBlur = () => {},
-	placeholder = '',
-	value = '',
-	extRef,
-}) => {
-	const [inputValue, setInputValue] = useState(value);
-	const onChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
-		setInputValue(e.target.value);
-		onChange(e);
-	};
-	const onFocusInput = (e: ChangeEvent<HTMLInputElement>) => {
-		onFocus(e);
-	};
-	const onBlurInput = (e: ChangeEvent<HTMLInputElement>) => {
-		onBlur(e);
-	};
-	return (
-		<UserNameStyled
-			ref={extRef}
-			onFocus={onFocusInput}
-			onBlur={onBlurInput}
-			onChange={onChangeInput}
-			placeholder={placeholder}
-			value={inputValue}
-		/>
-	);
 };
+export type InputState = {
+	value: string;
+	placeholder: string;
+};
+export class Input extends Component<InputProps, InputState> {
+	static defaultProps = {
+		onChange: (e: ChangeEvent<HTMLInputElement>) => {},
+		onFocus: (e: ChangeEvent<HTMLInputElement>) => {},
+		onBlur: (e: ChangeEvent<HTMLInputElement>) => {},
+		placeholder: '',
+		value: '',
+	};
+	inputRef: RefObject<HTMLInputElement> = createRef<HTMLInputElement>();
+	constructor(props: InputProps) {
+		super(props);
+		this.state = {
+			value: this.props.value || '',
+			placeholder: this.props.placeholder || '',
+		};
+		this.inputRef = createRef();
+	}
+	componentDidMount = () => {
+		if (this.inputRef.current) this.inputRef.current.focus();
+	};
+	onChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
+		this.setState({
+			value: e.target.value,
+		});
+		if (this.props.onChange) this.props.onChange(e);
+	};
+	onFocusInput = (e: ChangeEvent<HTMLInputElement>) => {
+		if (this.props.onFocus) this.props.onFocus(e);
+	};
+	onBlurInput = (e: ChangeEvent<HTMLInputElement>) => {
+		if (this.props.onBlur) this.props.onBlur(e);
+	};
+	setValue = (value: string) => {
+		this.setState({
+			value: value,
+		});
+	};
+	render() {
+		return (
+			<UserNameStyled
+				ref={this.inputRef}
+				onChange={this.onChangeInput}
+				onFocus={this.onFocusInput}
+				onBlur={this.onBlurInput}
+				placeholder={this.state.placeholder}
+				value={this.state.value}
+			/>
+		);
+	}
+}
