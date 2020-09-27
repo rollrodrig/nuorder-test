@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { textColor } from '../../storage/colors';
+import { textColor } from '../../constants/colors';
 export interface LoadingProps {}
 export const LoadingStyled = styled.div`
 	display: block;

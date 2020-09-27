@@ -1,6 +1,6 @@
 import React, { Component, ChangeEvent, createRef, RefObject } from 'react';
 import styled from 'styled-components';
-import { borderColor } from '../../storage/colors';
+import { borderColor } from '../../constants/colors';
 const UserNameStyled = styled.input`
 	height: 40px;
 	font-size: 16px;

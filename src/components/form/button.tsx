@@ -1,6 +1,6 @@
 import React, { FC, ReactNode } from 'react';
 import styled from 'styled-components';
-import { borderColor, textColor, bgColor } from '../../storage/colors';
+import { borderColor, textColor, bgColor } from '../../constants/colors';
 const ButtonStyled = styled.button`
 	border: 1px solid ${borderColor};
 	border-radius: 3px;

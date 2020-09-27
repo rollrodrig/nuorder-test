@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 import { Warning, Error, Success } from '../icons/icons';
-import { errorColor, warningColor, successColor } from '../../storage/colors';
+import { errorColor, warningColor, successColor } from '../../constants/colors';
 const IconStyled = styled.span`
 	color: ${(props: { type: string }) => {
 		if (props.type === MessageType.error) {

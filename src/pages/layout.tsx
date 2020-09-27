@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { textColor } from '../storage/colors';
+import { textColor } from '../constants/colors';
 const LayoutStyled = styled.div`
 	width: 100%;
 	max-width: 900px;

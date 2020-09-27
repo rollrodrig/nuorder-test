@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { bgColor, borderColor } from '../../storage/colors';
+import { bgColor, borderColor } from '../../constants/colors';
 const RowStyled = styled.div`
 	padding: 10px 15px;
 	background-color: ${({ selected }: { selected: boolean }) =>
