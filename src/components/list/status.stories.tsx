@@ -9,6 +9,7 @@ const Template: Story<StatusProps> = (args) => <Status {...args} />;
 export const Error = Template.bind({});
 Error.args = {
 	status: {
+		ready: false,
 		error: true,
 		loading: false,
 		success: false,
@@ -17,6 +18,7 @@ Error.args = {
 export const Loading = Template.bind({});
 Loading.args = {
 	status: {
+		ready: false,
 		error: false,
 		loading: true,
 		success: false,
@@ -25,6 +27,7 @@ Loading.args = {
 export const NoRender = Template.bind({});
 NoRender.args = {
 	status: {
+		ready: false,
 		error: false,
 		loading: false,
 		success: true,

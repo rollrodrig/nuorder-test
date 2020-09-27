@@ -15,10 +15,12 @@ export type InputProps = {
 	onBlur?: (e: ChangeEvent<HTMLInputElement>) => void;
 	placeholder?: string;
 	value?: string;
+	disabled?: boolean;
 };
 export type InputState = {
 	value: string;
 	placeholder: string;
+	disabled: boolean;
 };
 export class Input extends Component<InputProps, InputState> {
 	static defaultProps = {
@@ -27,6 +29,7 @@ export class Input extends Component<InputProps, InputState> {
 		onBlur: (e: ChangeEvent<HTMLInputElement>) => {},
 		placeholder: '',
 		value: '',
+		disabled: false,
 	};
 	inputRef: RefObject<HTMLInputElement> = createRef<HTMLInputElement>();
 	constructor(props: InputProps) {
@@ -34,6 +37,7 @@ export class Input extends Component<InputProps, InputState> {
 		this.state = {
 			value: this.props.value || '',
 			placeholder: this.props.placeholder || '',
+			disabled: this.props.disabled || false,
 		};
 		this.inputRef = createRef();
 	}
@@ -66,6 +70,7 @@ export class Input extends Component<InputProps, InputState> {
 				onBlur={this.onBlurInput}
 				placeholder={this.state.placeholder}
 				value={this.state.value}
+				disabled={this.props.disabled}
 			/>
 		);
 	}

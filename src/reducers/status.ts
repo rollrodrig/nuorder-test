@@ -13,11 +13,13 @@ export const setSuccess = (state: boolean) => {
 	return { type: ACTIONS.STATUS_SET_SUCCESS, payload: { state } };
 };
 export interface TStatusState {
+	ready: boolean;
 	loading: boolean;
 	success: boolean;
 	error: boolean;
 }
 export const initialState = (): TStatusState => ({
+	ready: false,
 	loading: false,
 	success: false,
 	error: false,

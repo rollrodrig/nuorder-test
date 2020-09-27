@@ -4,11 +4,10 @@ import { setLoading, setError } from './status';
 export enum ACTIONS {
 	STORAGE_SET_RESULTS = 'STORAGE_SET_RESULTS',
 }
-export const makeRequest = (query: string) => {
-	console.log('==== query', query);
+export const makeRequest = () => {
 	return (dispatch: any, state: TReducer) => {
 		dispatch(setLoading(true));
-		getResults('')
+		getResults()
 			.then((data: any) => {
 				console.log(data);
 				dispatch(setLoading(false));
