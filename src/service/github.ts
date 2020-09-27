@@ -24,13 +24,13 @@ export interface TIssue {
 export const getResults = (): Promise<TIssuesData[]> => {
 	console.log('=== request results ');
 	return new Promise((resolve, reject) => {
-		// axios
-		// 	.get(FB_REACT_ISSUES)
-		// 	.then((data) => resolve(data.data))
-		// 	.catch((err) => reject(err));
-		setTimeout(() => {
-			resolve(fakeResults());
-		}, 3000);
+		axios
+			.get(FB_REACT_ISSUES)
+			.then((data) => resolve(data.data))
+			.catch((err) => reject(err));
+		// setTimeout(() => {
+		// 	resolve(fakeResults()['data']);
+		// }, 3000);
 	});
 };
 export const getResultView = (id: string): Promise<TIssue> => {

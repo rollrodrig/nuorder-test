@@ -3,6 +3,7 @@ import { getResults, TIssuesData } from '../service/github';
 import { setLoading, setError } from './status';
 export enum ACTIONS {
 	STORAGE_SET_RESULTS = 'STORAGE_SET_RESULTS',
+	STORAGE_SET_KEYWORDS = 'STORAGE_SET_KEYWORDS',
 }
 export const makeRequest = () => {
 	return (dispatch: any, state: TReducer) => {
@@ -11,7 +12,7 @@ export const makeRequest = () => {
 			.then((data: any) => {
 				console.log(data);
 				dispatch(setLoading(false));
-				dispatch(setResults(data.data));
+				dispatch(setResults(data));
 			})
 			.catch((error: any) => {
 				dispatch(setLoading(false));
@@ -22,10 +23,15 @@ export const makeRequest = () => {
 export const setResults = (results: any[]) => {
 	return { type: ACTIONS.STORAGE_SET_RESULTS, payload: { results } };
 };
+export const setKeywords = (keywords: string) => {
+	return { type: ACTIONS.STORAGE_SET_KEYWORDS, payload: { keywords } };
+};
 export interface TStorageState {
+	keywords: string;
 	results: TIssuesData[];
 }
 export const initialState = (): TStorageState => ({
+	keywords: '',
 	results: [],
 });
 export const Storage = (
@@ -37,6 +43,11 @@ export const Storage = (
 			return {
 				...state,
 				results: action.payload.results,
+			};
+		case ACTIONS.STORAGE_SET_KEYWORDS:
+			return {
+				...state,
+				keywords: action.payload.keywords,
 			};
 		default:
 			return state;

@@ -41,9 +41,6 @@ export class Input extends Component<InputProps, InputState> {
 		};
 		this.inputRef = createRef();
 	}
-	componentDidMount = () => {
-		if (this.inputRef.current) this.inputRef.current.focus();
-	};
 	onChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
 		this.setState({
 			value: e.target.value,
@@ -61,6 +58,9 @@ export class Input extends Component<InputProps, InputState> {
 			value: value,
 		});
 	};
+	// forceFocus = () => {
+	// 	if (this.inputRef.current) this.inputRef.current.focus();
+	// };
 	render() {
 		return (
 			<UserNameStyled
@@ -70,7 +70,7 @@ export class Input extends Component<InputProps, InputState> {
 				onBlur={this.onBlurInput}
 				placeholder={this.state.placeholder}
 				value={this.state.value}
-				disabled={this.props.disabled}
+				disabled={this.state.disabled}
 			/>
 		);
 	}
