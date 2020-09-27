@@ -6,9 +6,6 @@ import { MessageType } from '../messages/message-icon';
 const hasResults = (results: TIssuesData[]): boolean => {
 	return results.length > 0;
 };
-export interface ResultsProps {
-	results: TIssuesData[];
-}
 export const calcNextIndex = (key: number, current: number, max: number) => {
 	if (max <= 0) return 0;
 	let next = current;
@@ -21,12 +18,18 @@ export const calcNextIndex = (key: number, current: number, max: number) => {
 	}
 	return next;
 };
+export const isArrowKey = (keyCode: number): boolean => {
+	return keyCode === 38 || keyCode === 40;
+};
+export interface ResultsProps {
+	results: TIssuesData[];
+}
 export const Results: FC<ResultsProps> = ({ results = [] }) => {
-	const [selectedIndex, setSelectedIndex] = useState<number>(0);
-	const currentIndex = useRef<number>(0);
+	const [selectedIndex, setSelectedIndex] = useState<number>(-1);
+	const currentIndex = useRef<number>(-1);
 	useEffect(() => {
 		const keyListener = (event: any) => {
-			if (event.keyCode === 38 || event.keyCode === 40) {
+			if (isArrowKey(event.keyCode)) {
 				currentIndex.current = calcNextIndex(
 					event.keyCode,
 					currentIndex.current,
@@ -40,7 +43,6 @@ export const Results: FC<ResultsProps> = ({ results = [] }) => {
 			document.removeEventListener('keyup', keyListener);
 		};
 	}, [results]);
-	console.log('render');
 	return (
 		<div>
 			{hasResults(results) ? (
@@ -54,7 +56,7 @@ export const Results: FC<ResultsProps> = ({ results = [] }) => {
 				))
 			) : (
 				<Message type={MessageType.warning}>
-					Type somethign in the search box
+					Type something in the search box
 				</Message>
 			)}
 		</div>
