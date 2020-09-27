@@ -1,9 +1,7 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 import { textColor } from '../../storage/colors';
-export interface LoadingProps {
-	children: React.ReactNode;
-}
+export interface LoadingProps {}
 export const LoadingStyled = styled.div`
 	display: block;
 	margin: 10px auto;
@@ -90,7 +88,7 @@ export const LoadingStyled = styled.div`
 	}
 `;
 
-export const Loading: FC<LoadingProps> = ({ children }) => {
+export const Loading: FC<LoadingProps> = () => {
 	return (
 		<LoadingStyled>
 			<div></div>

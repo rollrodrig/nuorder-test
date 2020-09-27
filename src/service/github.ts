@@ -1,5 +1,6 @@
 import axios from 'axios';
 import cjb from 'customjsonbuilder';
+import { fakeResults, fakeResultView } from './fakeResults';
 export interface TIssuesData {
 	id: string;
 	title: string;
@@ -7,22 +8,21 @@ export interface TIssuesData {
 export interface TIssue {
 	id: string;
 	title: string;
+	body: string;
 }
 export const getResults = (query: string): Promise<TIssuesData[]> => {
 	console.log('=== request results ');
-	const data = cjb.build(`{data:{id:uuid,title:title,$times:4}}`);
-	return new Promise((resolve) => {
+	return new Promise((resolve, reject) => {
 		setTimeout(() => {
-			resolve(data);
+			resolve(fakeResults());
 		}, 3000);
 	});
 };
 export const getResultView = (id: string): Promise<TIssue> => {
 	console.log('=== request results ');
-	const data = cjb.build(`{data:{id:uuid,title:title,body:text}}`);
-	return new Promise((resolve) => {
+	return new Promise((resolve, reject) => {
 		setTimeout(() => {
-			resolve(data);
+			resolve(fakeResultView());
 		}, 3000);
 	});
 };
