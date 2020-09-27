@@ -1,14 +1,16 @@
 import { TReducer } from './root';
-import { getResults } from '../service/github';
+import { getResults, TIssuesData } from '../service/github';
 import { setLoading, setError } from './status';
 export enum ACTIONS {
 	STORAGE_SET_RESULTS = 'STORAGE_SET_RESULTS',
 }
 export const makeRequest = (query: string) => {
+	console.log('==== query', query);
 	return (dispatch: any, state: TReducer) => {
 		dispatch(setLoading(true));
 		getResults('')
 			.then((data: any) => {
+				console.log(data);
 				dispatch(setLoading(false));
 				dispatch(setResults(data.data));
 			})
@@ -22,7 +24,7 @@ export const setResults = (results: any[]) => {
 	return { type: ACTIONS.STORAGE_SET_RESULTS, payload: { results } };
 };
 export interface TStorageState {
-	results: any[];
+	results: TIssuesData[];
 }
 export const initialState = (): TStorageState => ({
 	results: [],

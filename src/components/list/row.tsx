@@ -19,11 +19,14 @@ const TagStyled = styled.span`
 const Meta = styled.div`
 	font-size: 12px;
 `;
-export interface RowProps {}
-export const Row: FC<RowProps> = () => {
+export interface RowProps {
+	id: string;
+	title: string;
+}
+export const Row: FC<RowProps> = ({ id, title }) => {
 	return (
 		<RowStyled>
-			<Title>Bug: devtools Profiler causes unexpected errors </Title>
+			<Title>{title}</Title>
 			<TagStyled>Type: bug</TagStyled>
 			<Meta>#19911 opened yesterday by henryqdineen</Meta>
 		</RowStyled>

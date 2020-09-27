@@ -6,4 +6,8 @@ export default {
 	component: Row,
 } as Meta;
 const Template: Story<RowProps> = (args) => <Row {...args} />;
-export const Primary = Template.bind({});
+export const Default = Template.bind({});
+Default.args = {
+	id: '123',
+	title: 'Bug: devtools Profiler causes unexpected errors ',
+};
