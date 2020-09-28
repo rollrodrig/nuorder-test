@@ -10,6 +10,12 @@ export interface ListProps {}
 export const shouldShowStatus = (status: TStatusState): boolean => {
 	return status.loading || status.error;
 };
+export const filterIssues = (results: TIssuesData[], keyword: string) => {
+	const tmpResults = results.filter((res: TIssuesData) =>
+		res.title.includes(keyword)
+	);
+	return tmpResults;
+};
 export const List: FC<ListProps> = () => {
 	const [localResults, setlocalResults] = useState<TIssuesData[]>([]);
 	const reducerState = useSelector((state: TReducer) => state);
@@ -23,9 +29,7 @@ export const List: FC<ListProps> = () => {
 		if (reducerState.storage.keywords === '') {
 			setlocalResults(storage.results);
 		} else {
-			const tmpResults = storage.results.filter((res: TIssuesData) =>
-				res.title.includes(storage.keywords)
-			);
+			const tmpResults = filterIssues(storage.results, storage.keywords);
 			setlocalResults(tmpResults);
 		}
 	}, [storage]);
