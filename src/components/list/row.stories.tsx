@@ -15,6 +15,8 @@ Default.args = {
 		{ color: 'c7c7c7', name: 'example 1' },
 		{ color: 'c4c4c4', name: 'example 2' },
 	],
+	date: '2020',
+	author: 'roll',
 };
 export const Selected = Template.bind({});
 Selected.args = {
@@ -25,4 +27,6 @@ Selected.args = {
 		{ color: 'c7c7c7', name: 'example 1' },
 		{ color: 'c4c4c4', name: 'example 2' },
 	],
+	date: '2020',
+	author: 'roll',
 };

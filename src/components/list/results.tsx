@@ -53,6 +53,8 @@ export const Results: FC<ResultsProps> = ({ results = [] }) => {
 						id={result.id}
 						title={result.title}
 						labels={result.labels}
+						date={result.created_at}
+						author={result.user.login}
 					/>
 				))
 			) : (
