@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-const SubmitedStyled = styled.div`
+export const SubmitedStyled = styled.div`
 	font-size: 18px;
 `;
 export interface KeywordProps {
