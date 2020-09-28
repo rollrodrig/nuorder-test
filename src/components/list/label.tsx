@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 import { TIssuesLabes } from '../../service/github';
-const LabelStyled = styled.span`
+export const LabelStyled = styled.span`
 	border-radius: 30px;
 	font-size: 11px;
 	padding: 0 5px;

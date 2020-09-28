@@ -16,6 +16,7 @@ export interface TIssuesData {
 	updated_at: string;
 	user: { login: string; id: number; avatar: string };
 	labels: TIssuesLabes[];
+	selected: boolean;
 }
 export interface TIssue {
 	id: string;
@@ -27,7 +28,6 @@ export interface TIssue {
 	updated_at: string;
 }
 export const getResults = (): Promise<TIssuesData[]> => {
-	console.log('=== request results ');
 	return new Promise((resolve, reject) => {
 		axios
 			.get(FB_REACT_ISSUES)

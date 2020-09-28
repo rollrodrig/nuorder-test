@@ -58,9 +58,6 @@ export class Input extends Component<InputProps, InputState> {
 			value: value,
 		});
 	};
-	// forceFocus = () => {
-	// 	if (this.inputRef.current) this.inputRef.current.focus();
-	// };
 	render() {
 		return (
 			<UserNameStyled

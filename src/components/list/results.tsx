@@ -3,7 +3,7 @@ import { Row } from './row';
 import { TIssuesData } from '../../service/github';
 import { Message } from '../messages/message';
 import { MessageType } from '../messages/message-icon';
-const hasResults = (results: TIssuesData[]): boolean => {
+export const hasResults = (results: TIssuesData[]): boolean => {
 	return results.length > 0;
 };
 export const calcNextIndex = (key: number, current: number, max: number) => {

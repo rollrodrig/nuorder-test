@@ -10,7 +10,6 @@ export const makeRequest = () => {
 		dispatch(setLoading(true));
 		getResults()
 			.then((data: any) => {
-				console.log(data);
 				dispatch(setLoading(false));
 				dispatch(setResults(data));
 			})

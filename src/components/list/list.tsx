@@ -9,7 +9,7 @@ import { TStatusState } from '../../reducers/status';
 import { makeRequest, setResults } from '../../reducers/storage';
 import { TIssuesData } from '../../service/github';
 export interface ListProps {}
-const shouldShowStatus = (status: TStatusState): boolean => {
+export const shouldShowStatus = (status: TStatusState): boolean => {
 	return status.loading || status.error;
 };
 export const List: FC<ListProps> = () => {
