@@ -1,13 +1,11 @@
 import React, { FC, useEffect, useState } from 'react';
-import { Wrapper } from './wrapper';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { TReducer } from '../../reducers/root';
-import { Status } from './status';
-import { Results } from './results';
 import { TStatusState } from '../../reducers/status';
-import { makeRequest, setResults } from '../../reducers/storage';
+import { makeRequest } from '../../reducers/storage';
 import { TIssuesData } from '../../service/github';
+import { ListView } from './list-view';
 export interface ListProps {}
 export const shouldShowStatus = (status: TStatusState): boolean => {
 	return status.loading || status.error;
@@ -31,13 +29,5 @@ export const List: FC<ListProps> = () => {
 			setlocalResults(tmpResults);
 		}
 	}, [storage]);
-	return (
-		<Wrapper>
-			{shouldShowStatus(status) ? (
-				<Status status={status} />
-			) : (
-				<Results results={localResults} />
-			)}
-		</Wrapper>
-	);
+	return <ListView status={status} results={localResults} />;
 };
